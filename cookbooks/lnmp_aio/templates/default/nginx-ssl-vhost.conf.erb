@@ -1,0 +1,34 @@
+server {
+  listen 443 default ssl;
+  server_name <%= @params[:fqdn] %>;
+
+  access_log <%= node[:nginx][:log_dir] %>/<%= @params[:fqdn] %>-access.log;
+  error_log <%= node[:nginx][:log_dir] %>/<%= @params[:fqdn] %>-error.log;
+
+  root <%= node[:nginx][:content_dir] %>/<%= @params[:fqdn] %>/htdocs/;
+
+  # Display a maintenance page if it exists.
+  try_files /system/maintenance.html @proxy;
+
+  # SSL config
+  ssl_certificate <%= node[:nginx][:dir] %>/ssl/<%= @params[:fqdn] %>.crt;
+  ssl_certificate_key <%= node[:nginx][:dir] %>/ssl/<%= @params[:fqdn] %>.key;
+
+  location / {
+    index index.html index.php;
+    try_files $uri $uri/ /index.php;
+  }
+
+  location ~ .php$ {
+<% if node[:php5_fpm][:listen] == "socket" -%>
+    fastcgi_pass   unix:<%= node[:php5_fpm][:listen_socket] %>;
+<% else %>
+    fastcgi_pass   <%= node[:php5_fpm][:listen_ip] %>:<%= node[:php5_fpm][:listen_port] %>;
+<% end -%>
+  }
+
+  location ~* \.(js|css|png|jpg|jpeg|gif|ico)$ {
+    expires max;
+    log_not_found off;
+  }
+}

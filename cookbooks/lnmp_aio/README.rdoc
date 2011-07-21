@@ -1,0 +1,26 @@
+= DESCRIPTION:
+
+= REQUIREMENTS:
+
+= ATTRIBUTES:
+
+= USAGE:
+
+== Stuff to do
+* Including an SSL vhost that hosts various tools like phpmyadmin and a management tool for email configuration etc.
+* Alerts for high apache/mysql load or low/non-existent postfix activity, etc.
+* Support Wordpress MultiSite
+* Support Wordpress self update over SFTP
+* Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)
+* ZF Backup & restore
+* Setup of SSL vhost with some default service(s) like phpmyadmin and a self management tool (vhost manager)
+* Enable gitweb & assign it to the default vhost
+* Ability to deploy Drupal sites
+* KeePass or similar?
+* Postfix high load
+* MySQL high load
+* Low memory
+* Nginx high load
+* Enable gitweb (probably within aforementioned SSL vhost)
+* Installation/Deployment/management recipes for Drupal? Maybe?
+* Full and proper email stack (local delivery, pop3, imap, ldap configuration)
