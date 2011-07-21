@@ -8,4 +8,4 @@ version          "0.0.1"
 depends "phpmyadmin"
 depends "nginx"
 
-recipe "default","Installs an SSL vhost in NGINX and puts some software (like phpmyadmin) in it."
+recipe "lnmp_aio::default","Installs an SSL vhost in NGINX and puts some software (like phpmyadmin) in it."

@@ -18,7 +18,7 @@
   "recommendations": {
   },
   "recipes": {
-    "default": "Installs an SSL vhost in NGINX and puts some software (like phpmyadmin) in it."
+    "lnmp_aio::default": "Installs an SSL vhost in NGINX and puts some software (like phpmyadmin) in it."
   },
   "groupings": {
   },
