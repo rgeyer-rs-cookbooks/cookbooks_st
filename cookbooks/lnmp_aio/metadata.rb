@@ -7,5 +7,12 @@ version          "0.0.1"
 
 depends "phpmyadmin"
 depends "nginx"
+depends "php5"
 
-recipe "lnmp_aio::default","Installs an SSL vhost in NGINX and puts some software (like phpmyadmin) in it."
+recipe "lnmp_aio::default","Installs an SSL vhost in nginx and puts some software (like phpmyadmin) in it."
+
+attribute "lnmp_aio/web/hostname",
+  :display_name => "Web Server Hostname",
+  :description => "The fully qualified domain name where some useful tools will be deployed.",
+  :required => "required",
+  :recipes => ["lnmp_aio::default"]
