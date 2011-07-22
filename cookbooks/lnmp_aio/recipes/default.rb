@@ -34,7 +34,7 @@ bash "Create SSL Certificates" do
   code <<-EOH
   umask 077
   openssl genrsa 2048 > #{fqdn}.key
-  openssl req -subj "Self signed cert for #{fqdn}" -new -x509 -nodes -sha1 -days 3650 -key #{fqdn}.key > #{fqdn}.crt
+  openssl req -subj '/CN=#{fqdn}' -new -x509 -nodes -sha1 -days 3650 -key #{fqdn}.key > #{fqdn}.crt
   cat #{fqdn}.key #{fqdn}.crt > #{fqdn}.pem
   EOH
   not_if { ::File.exists?(::File.join(nginx_ssl_dir, "#{fqdn}.pem")) }

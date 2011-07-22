@@ -8,7 +8,6 @@
 
 == Stuff to do
 * Including an SSL vhost that hosts various tools like phpmyadmin and a management tool for email configuration etc.
-* Alerts for high apache/mysql load or low/non-existent postfix activity, etc.
 * Support Wordpress MultiSite
 * Support Wordpress self update over SFTP
 * Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)
