@@ -1,4 +1,12 @@
 server {
+  listen 80;
+  server_name <%= @params[:fqdn] %>;
+
+  # Force SSL
+  rewrite ^ https://<%= @params[:fqdn] %>$request_uri? permanent;
+}
+
+server {
   listen 443 default ssl;
   server_name <%= @params[:fqdn] %>;
 
@@ -35,4 +43,7 @@ server {
     expires max;
     log_not_found off;
   }
+
+  include <%= node[:nginx][:dir] %>/sites-available/<%= @params[:fqdn] %>.d/*.conf;
+  include <%= node[:nginx][:content_dir] %>/<%= @params[:fqdn] %>/nginx_config/*.conf;
 }

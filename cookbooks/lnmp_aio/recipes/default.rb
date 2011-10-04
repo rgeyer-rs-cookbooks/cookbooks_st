@@ -17,6 +17,7 @@
 # limitations under the License.
 
 include_recipe "php5::fpm"
+include_recipe "perl::default"
 
 nginx_ssl_dir = "#{node[:nginx][:dir]}/ssl"
 fqdn = node[:lnmp_aio][:web][:hostname]
@@ -51,7 +52,6 @@ end
 phpmyadmin_instance phpadmin_home do
   home phpadmin_home
   action :create
-  notifies :restart, resources(:service => "php5-fpm"), :immediately
 end
 
 # TODO: Restart the php-fpm app server to account for the mcrypt installation
