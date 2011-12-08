@@ -25,3 +25,4 @@
 * Nginx high load
 * Installation/Deployment/management recipes for Drupal? Maybe?
 * Full and proper email stack (local delivery, pop3, imap, ldap configuration)
+* Properly 3-Tier it yo.. http://www.rooflabs.com/2011/04/12/architecting-a-highly-scalable-and-high-performing-wordpress-environment-part-1/
