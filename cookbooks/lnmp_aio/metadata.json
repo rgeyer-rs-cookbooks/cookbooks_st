@@ -2,6 +2,7 @@
   "dependencies": {
     "phpmyadmin": ">= 0.0.0",
     "nginx": ">= 0.0.0",
+    "perl": ">= 0.0.0",
     "php5": ">= 0.0.0"
   },
   "name": "lnmp_aio",
@@ -27,7 +28,7 @@
   "platforms": {
   },
   "maintainer": "Ryan J. Geyer",
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n== Stuff to do\n* Including an SSL vhost that hosts various tools like phpmyadmin and a management tool for email configuration etc.\n* Alerts for high apache/mysql load or low/non-existent postfix activity, etc.\n* Support Wordpress MultiSite\n* Support Wordpress self update over SFTP\n* Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)\n* ZF Backup & restore\n* Setup of SSL vhost with some default service(s) like phpmyadmin and a self management tool (vhost manager)\n* Enable gitweb & assign it to the default vhost\n* Ability to deploy Drupal sites\n* KeePass or similar?\n* Postfix high load\n* MySQL high load\n* Low memory\n* Nginx high load\n* Enable gitweb (probably within aforementioned SSL vhost)\n* Installation/Deployment/management recipes for Drupal? Maybe?\n* Full and proper email stack (local delivery, pop3, imap, ldap configuration)",
+  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n== Stuff to do\n* Including an SSL vhost (Done)\n  * phpmyadmin (Done)\n  * redirect from HTTP -> HTTPS (Done)\n  * Index page\n  * Management tool for email configuration etc.\n  * Gitweb (For my customization)\n* Support Wordpress MultiSite\n* Support Wordpress self update over SFTP (Done)\n* Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)\n* ZF Backup & restore\n* Ability to deploy Drupal sites\n* KeePass or similar?\n* Postfix high load\n* MySQL high load\n* Low memory\n* Nginx high load\n* Installation/Deployment/management recipes for Drupal? Maybe?\n* Full and proper email stack (local delivery, pop3, imap, ldap configuration)\n* Properly 3-Tier it yo.. http://www.rooflabs.com/2011/04/12/architecting-a-highly-scalable-and-high-performing-wordpress-environment-part-1/",
   "version": "0.0.1",
   "recommendations": {
   },

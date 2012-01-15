@@ -5,9 +5,9 @@ description      "Installs/Configures lnmp_aio"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-depends "phpmyadmin"
-depends "nginx"
-depends "php5"
+%w{phpmyadmin nginx php5 perl}.each do |d|
+  depends d
+end
 
 recipe "lnmp_aio::default","Installs an SSL vhost in nginx and puts some software (like phpmyadmin) in it."
 
