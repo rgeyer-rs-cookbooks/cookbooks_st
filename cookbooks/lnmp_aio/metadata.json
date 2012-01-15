@@ -3,7 +3,8 @@
     "phpmyadmin": ">= 0.0.0",
     "nginx": ">= 0.0.0",
     "perl": ">= 0.0.0",
-    "php5": ">= 0.0.0"
+    "php5": ">= 0.0.0",
+    "rs_utils": ">= 0.0.0"
   },
   "name": "lnmp_aio",
   "maintainer_email": "me@ryangeyer.com",

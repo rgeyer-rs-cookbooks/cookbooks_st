@@ -16,7 +16,9 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-include_recipe "php5::fpm"
+rs_utils_marker :begin
+
+include_recipe "php5::install_fpm"
 include_recipe "perl::default"
 
 nginx_ssl_dir = "#{node[:nginx][:dir]}/ssl"
@@ -55,3 +57,5 @@ phpmyadmin_instance phpadmin_home do
 end
 
 # TODO: Restart the php-fpm app server to account for the mcrypt installation
+
+rs_utils_marker :end
