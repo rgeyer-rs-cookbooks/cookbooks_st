@@ -53,6 +53,7 @@ end
 
 phpmyadmin_instance phpadmin_home do
   home phpadmin_home
+  user node[:nginx][:user]
   action :create
 end
 
