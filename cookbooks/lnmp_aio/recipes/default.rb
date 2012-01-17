@@ -18,6 +18,11 @@
 
 rs_utils_marker :begin
 
+if node[:platform] == "ubuntu"
+  node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
+  node[:php5][:module_list] += " fileinfo" unless node[:php5][:module_list] =~ /fileinfo/
+end
+
 include_recipe "php5::install_fpm"
 include_recipe "perl::default"
 
