@@ -16,7 +16,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-rs_utils_marker :begin
+rightscale_marker :begin
 
 if node[:platform] == "ubuntu"
   node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
@@ -64,4 +64,4 @@ end
 
 # TODO: Restart the php-fpm app server to account for the mcrypt installation
 
-rs_utils_marker :end
+rightscale_marker :end
