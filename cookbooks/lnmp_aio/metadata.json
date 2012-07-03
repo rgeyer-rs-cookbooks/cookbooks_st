@@ -9,6 +9,322 @@
   "name": "lnmp_aio",
   "maintainer_email": "me@ryangeyer.com",
   "attributes": {
+    "mail_postfix/db_host": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "localhost",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The hostname of the postfix configuration MySQL database server",
+      "display_name": "Postfix MySQL Database Host"
+    },
+    "php5/module_list": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "A list of PHP5 modules to install, separated by spaces. Only supply the module name appearing after php5-.  For instance if you wanted php5-mysql and php5-imap installed, this list should be set to \"mysql imap\".  To view a full list of available php5 modules see the Ubuntu package page http://packages.ubuntu.com/search?searchon=names&keywords=php5- ",
+      "display_name": "PHP5 Module List"
+    },
+    "nginx/worker_connections": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "1024",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Number of connections per worker",
+      "display_name": "Nginx Worker Connections"
+    },
+    "nginx/gzip_types": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": [
+        "text/plain",
+        "text/html",
+        "text/css",
+        "application/x-javascript",
+        "text/xml",
+        "application/xml",
+        "application/xml+rss",
+        "text/javascript"
+      ],
+      "type": "array",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Supported MIME-types for gzip",
+      "display_name": "Nginx Gzip Types"
+    },
+    "nginx/binary": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/usr/sbin/nginx",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Location of the nginx server binary",
+      "display_name": "Nginx Binary"
+    },
+    "mail_postfix/db_name": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "postfix",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The name of the postfix configuration database in MySQL",
+      "display_name": "Postfix MySQL Database Name"
+    },
+    "php5/listen_socket": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/var/run/php5-fpm.sock",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The full path and filename of the unix socket to listen on",
+      "display_name": "PHP5 FPM Listen Socket"
+    },
+    "nginx/keepalive_timeout": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "65",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "display_name": "Nginx Keepalive Timeout"
+    },
+    "nginx/gzip_proxied": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "any",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Whether gzip is proxied",
+      "display_name": "Nginx Gzip Proxied"
+    },
+    "nginx/gzip_comp_level": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "2",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Amount of compression to use",
+      "display_name": "Nginx Gzip Compression Level"
+    },
+    "nginx/dir": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/etc/nginx",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Location of nginx configuration files",
+      "display_name": "Nginx Directory"
+    },
+    "php5/listen": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "socket",
+        "tcp"
+      ],
+      "default": "socket",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The listening method, one of [socket, tcp].  If socket is selected, php5/listen_socket can optionally be supplied.  If tcp is selected, php5/listen_ip and php5/listen_port can optionally be supplied",
+      "display_name": "PHP5 FPM Listen Method"
+    },
+    "nginx/server_names_hash_bucket_size": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "64",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "display_name": "Nginx Server Names Hash Bucket Size"
+    },
+    "php5/listen_ip": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "127.0.0.1",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The TCP/IP address for PHP-FPM to listen on",
+      "display_name": "PHP5 FPM Listen IP"
+    },
+    "nginx/worker_processes": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "1",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Number of worker processes",
+      "display_name": "Nginx Worker Processes"
+    },
+    "nginx/gzip_http_version": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "1.0",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Version of HTTP Gzip",
+      "display_name": "Nginx Gzip HTTP Version"
+    },
+    "mail_postfix/db_pass": {
+      "required": "required",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The password to access the postfix configuration database in MySQL",
+      "display_name": "Postfix MySQL Database Password"
+    },
+    "php5/listen_port": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "9000",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The TCP/IP address for PHP-FPM to listen on",
+      "display_name": "PHP5 FPM Listen"
+    },
+    "php5/server_usage": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+        "shared",
+        "dedicated"
+      ],
+      "default": "dedicated",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "* dedicated (where the php-fpm config file allocates all existing resources of the machine)\n* shared (where the php-fpm config file is configured to use less resources so that it can be run concurrently with other apps like MySQL for example)",
+      "display_name": "Server Usage"
+    },
+    "nginx/log_dir": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/var/log/nginx",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Location for nginx logs",
+      "display_name": "Nginx Log Directory"
+    },
+    "nginx/content_dir": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "/var/www",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Location of nginx content files",
+      "display_name": "Nginx Content Directory"
+    },
+    "nginx/gzip": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "on",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Whether gzip is enabled",
+      "display_name": "Nginx Gzip"
+    },
     "lnmp_aio/web/hostname": {
       "required": "required",
       "calculated": false,
@@ -21,6 +337,34 @@
       ],
       "description": "The fully qualified domain name where some useful tools will be deployed.",
       "display_name": "Web Server Hostname"
+    },
+    "mail_postfix/db_user": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "postfix",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "The username to access the postfix configuration database in MySQL",
+      "display_name": "Postfix MySQL Database Username"
+    },
+    "nginx/keepalive": {
+      "required": "optional",
+      "calculated": false,
+      "choice": [
+
+      ],
+      "default": "on",
+      "type": "string",
+      "recipes": [
+        "lnmp_aio::default"
+      ],
+      "description": "Whether to enable keepalive",
+      "display_name": "Nginx Keepalive"
     }
   },
   "license": "Apache 2.0",
@@ -29,7 +373,7 @@
   "platforms": {
   },
   "maintainer": "Ryan J. Geyer",
-  "long_description": "= DESCRIPTION:\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n== Stuff to do\n* Including an SSL vhost (Done)\n  * phpmyadmin (Done)\n  * redirect from HTTP -> HTTPS (Done)\n  * Index page\n  * Management tool for email configuration etc.\n  * Gitweb (For my customization)\n* Support Wordpress MultiSite\n* Support Wordpress self update over SFTP (Done)\n* Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)\n* ZF Backup & restore\n* Ability to deploy Drupal sites\n* KeePass or similar?\n* Postfix high load\n* MySQL high load\n* Low memory\n* Nginx high load\n* Installation/Deployment/management recipes for Drupal? Maybe?\n* Full and proper email stack (local delivery, pop3, imap, ldap configuration)\n* Properly 3-Tier it yo.. http://www.rooflabs.com/2011/04/12/architecting-a-highly-scalable-and-high-performing-wordpress-environment-part-1/",
+  "long_description": "= DESCRIPTION:\n\nEffectively a role for the LNMP AIO server.  It includes all the \"extra\" stuff above and beyond what is in the RightScale database manager for Nginx & PHP\n\n= REQUIREMENTS:\n\n= ATTRIBUTES:\n\n= USAGE:\n\n== Stuff to do\n* Including an SSL vhost (Done)\n  * phpmyadmin (Done)\n  * redirect from HTTP -> HTTPS (Done?)\n  * Index page\n  * Management tool for email configuration etc.\n  * Gitweb (For my customization)\n* Support Wordpress MultiSite\n* Support Wordpress self update over SFTP (Done)\n* Ability to deploy Zend Framework apps/sites from SCM (SVN, Git, other?)\n* ZF Backup & restore\n* Ability to deploy Drupal sites\n* KeePass or similar?\n* Postfix high load\n* MySQL high load\n* Low memory\n* Nginx high load\n* Installation/Deployment/management recipes for Drupal? Maybe?\n* Full and proper email stack (local delivery, pop3, imap, ldap configuration)\n* Properly 3-Tier it yo.. http://www.rooflabs.com/2011/04/12/architecting-a-highly-scalable-and-high-performing-wordpress-environment-part-1/",
   "version": "0.0.1",
   "recommendations": {
   },
