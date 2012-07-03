@@ -5,7 +5,7 @@ description      "Installs/Configures lnmp_aio"
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.rdoc'))
 version          "0.0.1"
 
-%w{phpmyadmin nginx php5 perl rightscale}.each do |d|
+%w{phpmyadmin nginx php5 perl rightscale mail_postfix}.each do |d|
   depends d
 end
 
