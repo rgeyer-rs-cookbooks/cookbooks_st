@@ -1,5 +1,7 @@
 = DESCRIPTION:
 
+Effectively a role for the LNMP AIO server.  It includes all the "extra" stuff above and beyond what is in the RightScale database manager for Nginx & PHP
+
 = REQUIREMENTS:
 
 = ATTRIBUTES:
@@ -9,7 +11,7 @@
 == Stuff to do
 * Including an SSL vhost (Done)
   * phpmyadmin (Done)
-  * redirect from HTTP -> HTTPS (Done)
+  * redirect from HTTP -> HTTPS (Done?)
   * Index page
   * Management tool for email configuration etc.
   * Gitweb (For my customization)

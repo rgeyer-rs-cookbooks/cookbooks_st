@@ -23,7 +23,13 @@ if node[:platform] == "ubuntu"
   node[:php5][:module_list] += " fileinfo" unless node[:php5][:module_list] =~ /fileinfo/
 end
 
+include_recipe "nginx::install_from_package"
+include_recipe "nginx::setup_stats"
+include_recipe "php5::install_php"
 include_recipe "php5::install_fpm"
+include_recipe "php5::setup_fpm_nginx"
+include_recipe "php5::setup_fpmstats_nginx"
+include_recipe "mail_postfix::setup_postfix"
 include_recipe "perl::default"
 
 nginx_ssl_dir = "#{node[:nginx][:dir]}/ssl"
