@@ -2,7 +2,7 @@
 # Cookbook Name:: lnmp_aio
 # Recipe:: default
 #
-# Copyright 2010, Ryan J. Geyer
+# Copyright 2011-2012, Ryan J. Geyer
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -17,6 +17,13 @@
 # limitations under the License.
 
 rightscale_marker :begin
+
+# Preset some things that are in external cookbooks
+# TODO: Should have the storage mountpoint be a variable or input somewhere
+mountpoint = "/mnt/storage"
+node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
+
+node[:db_mysql][:datadir] = ::File.join(mountpoint, "mysql")
 
 if node[:platform] == "ubuntu"
   node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
