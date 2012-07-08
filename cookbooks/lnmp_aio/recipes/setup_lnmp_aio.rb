@@ -18,6 +18,27 @@
 
 rightscale_marker :begin
 
+# Preset some things that are in external cookbooks
+# TODO: Should have the storage mountpoint be a variable or input somewhere
+mountpoint = "/mnt/storage"
+# node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
+
+DATA_DIR = ::File.join(mountpoint, "mysql")
+
+directory DATA_DIR do
+  action :create
+end
+
+log "  Moving database to block device and starting database..."
+db DATA_DIR do
+  action [ :move_data_dir, :start ]
+end
+
+if node[:platform] == "ubuntu"
+  node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
+  node[:php5][:module_list] += " fileinfo" unless node[:php5][:module_list] =~ /fileinfo/
+end
+
 include_recipe "nginx::install_from_package"
 include_recipe "nginx::setup_stats"
 include_recipe "php5::install_php"
