@@ -21,7 +21,7 @@ rightscale_marker :begin
 # Preset some things that are in external cookbooks
 # TODO: Should have the storage mountpoint be a variable or input somewhere
 mountpoint = "/mnt/storage"
-node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
+# node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
 
 node[:db_mysql][:datadir] = ::File.join(mountpoint, "mysql")
 
