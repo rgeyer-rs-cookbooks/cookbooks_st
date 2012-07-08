@@ -25,6 +25,10 @@ node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-h
 
 node[:db_mysql][:datadir] = ::File.join(mountpoint, "mysql")
 
+directory node[:db_mysql][:datadir] do
+  action :create
+end
+
 if node[:platform] == "ubuntu"
   node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
   node[:php5][:module_list] += " fileinfo" unless node[:php5][:module_list] =~ /fileinfo/
