@@ -23,7 +23,7 @@ rightscale_marker :begin
 mountpoint = "/mnt/storage"
 # node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
 
-DATA_DIR = ::File.join(mountpoint, "mysql")
+DATA_DIR = mountpoint
 
 directory DATA_DIR do
   action :create
@@ -31,7 +31,7 @@ end
 
 log "  Moving database to block device and starting database..."
 db DATA_DIR do
-  action [ :move_data_dir, :start ]
+  action [ :stop, :move_data_dir, :start ]
 end
 
 if node[:platform] == "ubuntu"
