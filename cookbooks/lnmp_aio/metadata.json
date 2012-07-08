@@ -21,7 +21,7 @@
       "default": "localhost",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The hostname of the postfix configuration MySQL database server",
       "display_name": "Postfix MySQL Database Host"
@@ -35,7 +35,7 @@
       "default": "",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "A list of PHP5 modules to install, separated by spaces. Only supply the module name appearing after php5-.  For instance if you wanted php5-mysql and php5-imap installed, this list should be set to \"mysql imap\".  To view a full list of available php5 modules see the Ubuntu package page http://packages.ubuntu.com/search?searchon=names&keywords=php5- ",
       "display_name": "PHP5 Module List"
@@ -49,7 +49,7 @@
       "default": "1024",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Number of connections per worker",
       "display_name": "Nginx Worker Connections"
@@ -72,7 +72,7 @@
       ],
       "type": "array",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Supported MIME-types for gzip",
       "display_name": "Nginx Gzip Types"
@@ -86,7 +86,7 @@
       "default": "/usr/sbin/nginx",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Location of the nginx server binary",
       "display_name": "Nginx Binary"
@@ -100,7 +100,7 @@
       "default": "postfix",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The name of the postfix configuration database in MySQL",
       "display_name": "Postfix MySQL Database Name"
@@ -114,7 +114,7 @@
       "default": "/var/run/php5-fpm.sock",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The full path and filename of the unix socket to listen on",
       "display_name": "PHP5 FPM Listen Socket"
@@ -128,7 +128,7 @@
       "default": "65",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "display_name": "Nginx Keepalive Timeout"
     },
@@ -141,7 +141,7 @@
       "default": "any",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Whether gzip is proxied",
       "display_name": "Nginx Gzip Proxied"
@@ -155,7 +155,7 @@
       "default": "2",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Amount of compression to use",
       "display_name": "Nginx Gzip Compression Level"
@@ -169,7 +169,7 @@
       "default": "/etc/nginx",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Location of nginx configuration files",
       "display_name": "Nginx Directory"
@@ -184,7 +184,7 @@
       "default": "socket",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The listening method, one of [socket, tcp].  If socket is selected, php5/listen_socket can optionally be supplied.  If tcp is selected, php5/listen_ip and php5/listen_port can optionally be supplied",
       "display_name": "PHP5 FPM Listen Method"
@@ -198,7 +198,7 @@
       "default": "64",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "display_name": "Nginx Server Names Hash Bucket Size"
     },
@@ -211,7 +211,7 @@
       "default": "127.0.0.1",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The TCP/IP address for PHP-FPM to listen on",
       "display_name": "PHP5 FPM Listen IP"
@@ -225,7 +225,7 @@
       "default": "1",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Number of worker processes",
       "display_name": "Nginx Worker Processes"
@@ -239,7 +239,7 @@
       "default": "1.0",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Version of HTTP Gzip",
       "display_name": "Nginx Gzip HTTP Version"
@@ -252,7 +252,7 @@
       ],
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The password to access the postfix configuration database in MySQL",
       "display_name": "Postfix MySQL Database Password"
@@ -266,7 +266,7 @@
       "default": "9000",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The TCP/IP address for PHP-FPM to listen on",
       "display_name": "PHP5 FPM Listen"
@@ -281,7 +281,7 @@
       "default": "dedicated",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "* dedicated (where the php-fpm config file allocates all existing resources of the machine)\n* shared (where the php-fpm config file is configured to use less resources so that it can be run concurrently with other apps like MySQL for example)",
       "display_name": "Server Usage"
@@ -295,7 +295,7 @@
       "default": "/var/log/nginx",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Location for nginx logs",
       "display_name": "Nginx Log Directory"
@@ -309,7 +309,7 @@
       "default": "/var/www",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Location of nginx content files",
       "display_name": "Nginx Content Directory"
@@ -323,7 +323,7 @@
       "default": "on",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Whether gzip is enabled",
       "display_name": "Nginx Gzip"
@@ -336,7 +336,7 @@
       ],
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The fully qualified domain name where some useful tools will be deployed.",
       "display_name": "Web Server Hostname"
@@ -350,7 +350,7 @@
       "default": "postfix",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "The username to access the postfix configuration database in MySQL",
       "display_name": "Postfix MySQL Database Username"
@@ -364,7 +364,7 @@
       "default": "on",
       "type": "string",
       "recipes": [
-        "lnmp_aio::default"
+        "lnmp_aio::setup_lnmp_aio"
       ],
       "description": "Whether to enable keepalive",
       "display_name": "Nginx Keepalive"
@@ -381,7 +381,8 @@
   "recommendations": {
   },
   "recipes": {
-    "lnmp_aio::default": "Installs an SSL vhost in nginx and puts some software (like phpmyadmin) in it."
+    "lnmp_aio::default": "Sets up some variables, and overwrites some node attributes",
+    "lnmp_aio::setup_lnmp_aio": "Installs an SSL vhost in nginx and puts some software (like phpmyadmin) in it."
   },
   "groupings": {
   },
