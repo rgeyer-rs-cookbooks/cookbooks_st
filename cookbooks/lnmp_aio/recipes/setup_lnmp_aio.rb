@@ -29,9 +29,14 @@ directory DATA_DIR do
   action :create
 end
 
+log "  Stopping database..."
+db DATA_DIR do
+  action :stop
+end
+
 log "  Moving database to block device and starting database..."
 db DATA_DIR do
-  action [ :stop, :move_data_dir, :start ]
+  action [ :move_data_dir, :start ]
 end
 
 if node[:platform] == "ubuntu"
