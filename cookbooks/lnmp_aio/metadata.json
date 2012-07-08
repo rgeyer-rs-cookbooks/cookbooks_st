@@ -1,9 +1,11 @@
 {
   "dependencies": {
+    "db_mysql": ">= 0.0.0",
     "phpmyadmin": ">= 0.0.0",
     "nginx": ">= 0.0.0",
     "mail_postfix": ">= 0.0.0",
     "perl": ">= 0.0.0",
+    "app_wordpress": ">= 0.0.0",
     "rightscale": ">= 0.0.0",
     "php5": ">= 0.0.0"
   },
