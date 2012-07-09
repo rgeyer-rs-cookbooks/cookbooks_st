@@ -25,7 +25,7 @@ mountpoint = "/mnt/storage"
 
 DATA_DIR = ::File.join(mountpoint, 'mysql')
 
-directory mountpoint do
+directory DATA_DIR do
   action :create
 end
 
