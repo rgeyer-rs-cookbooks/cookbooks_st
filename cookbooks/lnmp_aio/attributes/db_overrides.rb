@@ -1,0 +1,1 @@
+node[:db][:data_dir] = '/mnt/storage/mysql'

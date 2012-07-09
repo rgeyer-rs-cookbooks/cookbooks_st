@@ -23,8 +23,6 @@ rightscale_marker :begin
 mountpoint = "/mnt/storage"
 # node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
 
-node[:db][:data_dir] = ::File.join(mountpoint, 'mysql')
-
 DATA_DIR = node[:db][:data_dir]
 
 directory DATA_DIR do
