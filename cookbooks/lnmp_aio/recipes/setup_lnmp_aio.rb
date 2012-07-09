@@ -40,6 +40,16 @@ db mountpoint do
   action [ :move_data_dir, :start ]
 end
 
+log "  Setting state of database to be 'initialized'..."
+db_init_status :set
+
+# Set master node variables
+db_state_set "Set master state" do
+  master_uuid node[:rightscale][:instance_uuid]
+  master_ip node[:cloud][:private_ips][0]
+  is_master true
+end
+
 if node[:platform] == "ubuntu"
   node[:php5][:module_list] += " curl" unless node[:php5][:module_list] =~ /curl/
   node[:php5][:module_list] += " fileinfo" unless node[:php5][:module_list] =~ /fileinfo/
