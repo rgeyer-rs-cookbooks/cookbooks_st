@@ -23,19 +23,20 @@ rightscale_marker :begin
 mountpoint = "/mnt/storage"
 # node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
 
-DATA_DIR = mountpoint
+DATA_DIR = ::File.join(mountpoint, 'mysql')
 
-directory DATA_DIR do
+directory mountpoint do
   action :create
 end
 
 log "  Stopping database..."
-db DATA_DIR do
+db mountpoint do
   action :stop
 end
 
 log "  Moving database to block device and starting database..."
-db DATA_DIR do
+db mountpoint do
+  data_dir DATA_DIR
   action [ :move_data_dir, :start ]
 end
 
