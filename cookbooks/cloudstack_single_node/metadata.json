@@ -1,0 +1,33 @@
+{
+  "name": "cloudstack_single_node",
+  "description": "Installs/Configures cloudstack_single_node",
+  "long_description": "Description\n===========\n\nRequirements\n============\n\nAttributes\n==========\n\nUsage\n=====\n\n",
+  "maintainer": "Ryan J. Geyer",
+  "maintainer_email": "me@ryangeyer.com",
+  "license": "All rights reserved",
+  "platforms": {
+  },
+  "dependencies": {
+    "db": "~> 13.2",
+    "db_mysql": "~> 13.2",
+    "rightscale": "~> 13.2"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "cloudstack_single_node::default": "Moves the database files to the mounted directory"
+  },
+  "version": "0.1.0"
+}
