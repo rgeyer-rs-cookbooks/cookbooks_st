@@ -1,0 +1,16 @@
+  [
+    {
+      "recipe_name": "app_wordpress::deploy",
+      "parameters": {
+      "app_wordpress/db_pass": "cred:DBAPPLICATION_PASSWORD",
+      "app_wordpress/vhost_fqdn": "text:foo.bar.baz"
+      }
+    },
+    {
+      "recipe_name": "nginx::setup_vhost",
+      "parameters": {
+      "nginx/vhost_fqdn": "text:foo.bar",
+      "nginx/aliases": "array:.chasejarvisshoeproject.com"
+      }
+    }
+  ]

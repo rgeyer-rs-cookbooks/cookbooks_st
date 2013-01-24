@@ -1,0 +1,74 @@
+define wpaio_deploy(@instance)
+  $inputs = @instance.inputs()
+  # TODO: Break this expression down into a few more steps..
+  $hostname_input = first(select($inputs, {"name": "lnmp_aio/web/hostname"}))
+  $hostname = split($hostname_input["value"], ":")[1]
+  $vhost_href = "https://"+$hostname+"/foo.js"
+  $vhost_http_response = http_get(href: $vhost_href, insecure: true)
+  $vhosts = from_json($vhost_http_response["body"])
+  call run_executables_on_instance(@instance, $vhosts)
+
+  define handle_error()
+    log_info("There was an error")
+    log_info($_error)
+  end
+
+  define run_executables_on_instance(@instance, $executables)
+    foreach $exec in $executables
+      call run_recipe_on_instance(@instance, $exec["recipe_name"], $exec["parameters"])
+    end
+  end
+
+  #############################################################################
+  # External definitions go here                                              #
+  #                                                                           #
+  #############################################################################
+
+  # Synchronously runs a single recipe on a single instance
+  #
+  # Inputs:
+  #   @instance           - A resource collection containing a single instance
+  #   $recipe_name        - The name of the recipe to run (the recipe must be in the repopath of the instance)
+  #   $input_values_hash  - Hash of input values to send to the recipe
+  #
+  # Raises:
+  #   Error if more than 1 instance exists in the @instance resource collection
+  #   Error if the recipe run did not complete successfully
+  #
+  define run_recipe_on_instance(@instance, $recipe_name, $input_values_hash)
+    $start = now()
+    $run_executable_params = {
+      recipe_name: $recipe_name,
+      ignore_lock: true
+    }
+
+    # Make sure we only have 1 instance passed in
+    if size(@instance) != 1
+      raise "Expecting 1 instance, but found " + size(@instance)
+    end
+
+    # transform the inputs for the run_executable API call
+    if type($input_values_hash) == "hash"
+      $inputs_array = []
+      foreach $k in keys($input_values_hash)
+        $inputs_array << { "name": $k, "value": $input_values_hash[$k] }
+      end
+      $run_executable_params["inputs"] = $inputs_array
+    end
+
+    log_info("Running " + $recipe_name + " on " + @instance:name[0])
+
+    # run the script and wait for completion
+    @task = @instance.run_executable($run_executable_params)
+    sleep_until(@task:summary[0] =~ "^completed|^failed") # Wait until it completes or errors out...
+
+    # Make sure it ran successfully
+    if @task:summary[0] =~ "^failed"
+      raise "Error running recipe " + $recipe_name + " on instance " + @instance:name[0]
+    end
+
+    $duration = now() - $start
+    log_info("Successfully ran " + $recipe_name + " on " + @instance:name[0] + " in " + $duration + " seconds")
+
+  end
+end
