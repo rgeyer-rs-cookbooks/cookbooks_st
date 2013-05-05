@@ -2,7 +2,7 @@
 # Cookbook Name:: lnmp_aio
 # Recipe:: setup_lnmp_aio
 #
-# Copyright 2012, Ryan J. Geyer
+# Copyright 2012-2013, Ryan J. Geyer
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -24,8 +24,13 @@ mountpoint = "/mnt/storage"
 # node[:app_wordpress][:version_store_path] = ::File.join(mountpoint, "wordpress-home", "versions")
 
 DATA_DIR = node[:db][:data_dir]
+datadir = ::File.join(DATA_DIR, "mysql")
 
 directory DATA_DIR do
+  action :create
+end
+
+directory datadir do
   action :create
 end
 
@@ -34,9 +39,16 @@ db DATA_DIR do
   action :stop
 end
 
-log "  Moving database to block device and starting database..."
+log "  Moving database to block device..."
+db datadir do
+  provider node[:db][:provider]
+  db_version node[:db][:version]
+  action :move_data_dir
+end
+
+log "  Starting database..."
 db DATA_DIR do
-  action [ :move_data_dir, :start ]
+  action [ :start ]
 end
 
 if node[:platform] == "ubuntu"

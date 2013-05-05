@@ -10,7 +10,7 @@
       "recipe_name": "nginx::setup_vhost",
       "parameters": {
       "nginx/vhost_fqdn": "text:foo.bar",
-      "nginx/aliases": "array:.chasejarvisshoeproject.com"
+      "nginx/aliases": "array:.foo.bar.com"
       }
     }
   ]
