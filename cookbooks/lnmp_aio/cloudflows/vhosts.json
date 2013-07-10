@@ -1,0 +1,45 @@
+  [
+    {
+      "recipe_name": "app_wordpress::deploy",
+      "parameters": {
+      "app_wordpress/db_pass": "cred:tasforwp.ryangeyer.com_db_pass",
+      "app_wordpress/vhost_fqdn": "text:tasforwp.ryangeyer.com"
+      }
+    },
+    {
+      "recipe_name": "nginx::setup_vhost",
+      "parameters": {
+      "nginx/vhost_fqdn": "text:www.chasejarvisshoeproject.com",
+      "nginx/aliases": "array:.chasejarvisshoeproject.com"
+      }
+    },
+    {
+      "recipe_name": "app_wordpress::deploy",
+      "parameters": {
+      "app_wordpress/db_pass": "cred:www.mcarthurmasonry.com_db_pass",
+      "app_wordpress/vhost_fqdn": "text:www.mcarthurmasonry.com",
+      "app_wordpress/vhost_aliases": "text:.mcarthurmasonry.com"
+      }
+    },
+    {
+      "recipe_name": "app_wordpress::deploy",
+      "parameters": {
+      "app_wordpress/db_pass": "cred:www.ryangeyer.com_db_pass",
+      "app_wordpress/vhost_fqdn": "text:www.ryangeyer.com"
+      }
+    },
+    {
+      "recipe_name": "nginx::setup_vhost",
+      "parameters": {
+      "nginx/vhost_fqdn": "text:www.dillholes.com",
+      "nginx/aliases": "array:.dillholes.com"
+      }
+    },
+    {
+      "recipe_name": "app_wordpress::deploy",
+      "parameters": {
+      "app_wordpress/db_pass": "cred:www.nslms.com_db_pass",
+      "app_wordpress/vhost_fqdn": "text:www.nslms.com"
+      }
+    }
+  ]
